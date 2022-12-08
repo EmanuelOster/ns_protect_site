@@ -5,7 +5,9 @@ use TYPO3\CMS\Core\Crypto\PasswordHashing\InvalidPasswordHashException;
 use TYPO3\CMS\Extbase\Mvc\Exception\StopActionException;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
-GeneralUtility::makeInstance(\TYPO3\CMS\Install\Service\SessionService::class)->startSession();
+if (TYPO3_MODE === 'FE') {
+    GeneralUtility::makeInstance(\TYPO3\CMS\Install\Service\SessionService::class)->startSession();
+}
 
 /***
  *
